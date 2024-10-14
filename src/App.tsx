@@ -5,7 +5,7 @@ function App() {
   return (
     <ChakraProvider>
       <Box p={5}>
-        <Heading mb={6}>Movie & Series Recommendations</Heading>
+        <Heading mb={6}>CineMatch - Movie & Series Recommendations</Heading>
         <MovieSearch />
       </Box>
     </ChakraProvider>

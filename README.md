@@ -1,46 +1,79 @@
-# Getting Started with Create React App
+<div style="display: inline-flex; flex-direction: column; justify-content: center; align-items: center;">
+  <h1>CineMatch</h1>
+  <img src="./public/camera.png" alt="movie icon" style="width:100px;"/>
+<div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**CineMatch** é uma aplicação de recomendação de filmes e séries que permite aos usuários buscar títulos, obter informações e descobrir novas opções de entretenimento. Utiliza a API OMDb para fornecer dados detalhados sobre filmes e séries.
 
-## Available Scripts
+## Funcionalidades
 
-In the project directory, you can run:
+- Busca de filmes e séries usando a [API OMDb](http://www.omdbapi.com/).
+- Exibição de pôster, título e avaliação dos filmes e séries buscados.
+- Interface amigável e responsiva, utilizando Chakra UI para estilização.
 
-### `npm start`
+## Tecnologias Utilizadas
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **ReactJS**: Biblioteca JavaScript para construir a interface de usuário.
+- **TypeScript**: Para tipagem estática e maior robustez no desenvolvimento.
+- **Chakra UI**: Biblioteca de componentes de UI para uma experiência de usuário agradável e rápida.
+- **Axios**: Cliente HTTP para requisições à API OMDb.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Como Rodar o Projeto Localmente
 
-### `npm test`
+Siga os passos abaixo para rodar a aplicação localmente:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 1. Clone o repositório
 
-### `npm run build`
+```bash
+git clone https://github.com/Grazziano/CineMatch.git
+cd CineMatch
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 2. Instale as dependências
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 3. Configuração da API OMDb
 
-### `npm run eject`
+Crie um arquivo `.env` na raiz do projeto e adicione a chave de API do OMDb que você obteve [aqui](http://www.omdbapi.com/apikey.aspx).
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+REACT_APP_OMDB_API_KEY=SUA_CHAVE_DE_API_AQUI
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 4. Inicie o servidor de desenvolvimento
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+npm start
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+A aplicação estará disponível em `http://localhost:3000`.
 
-## Learn More
+## Estrutura de Pastas
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+src/
+├── components/        # Componentes React reutilizáveis
+│   ├── MovieList.tsx  # Exibe a lista de filmes/séries
+│   ├── MovieSearch.tsx # Componente de busca de filmes/séries
+├── services/
+│   ├── api.ts         # Serviço de integração com a API OMDb
+├── types/
+│   ├── Movie.ts       # Definição do tipo Movie
+├── App.tsx            # Componente principal
+├── index.tsx          # Arquivo de entrada da aplicação
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Contribuição
+
+1. Faça um fork do projeto.
+2. Crie uma branch com sua feature: `git checkout -b minha-feature`.
+3. Commit suas mudanças: `git commit -m 'Adicionando minha feature'`.
+4. Envie sua branch: `git push origin minha-feature`.
+5. Abra um Pull Request.
+
+## Licença
+
+Este projeto está licenciado sob a MIT License - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
