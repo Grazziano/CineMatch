@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Movie } from '../types/Movie';
 
 const API_KEY = process.env.REACT_APP_OMDB_API_KEY;
-const BASE_URL = `http://www.omdbapi.com/?apikey=${API_KEY}`;
+const BASE_URL = `https://www.omdbapi.com/?apikey=${API_KEY}`;
 
 export const searchMovies = async (query: string): Promise<Movie[]> => {
   const response = await axios.get(`${BASE_URL}&s=${query}&type=movie`);
