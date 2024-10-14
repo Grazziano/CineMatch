@@ -24,16 +24,20 @@ export default function MovieSearch() {
   };
 
   return (
-    <Box>
-      <Input
-        placeholder="Search for movies..."
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        mb={4}
-      />
-      <Button onClick={handleSearch} colorScheme="teal">
-        Search
-      </Button>
+    <Box p={[4, 6, 8]} maxW="1200px" mx="auto">
+      <Box display="flex" flexDirection="row" gap="4">
+        <Input
+          placeholder="Search for movies..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          mb={4}
+          size="lg"
+          w={['100%', '100%', '50%']}
+        />
+        <Button onClick={handleSearch} colorScheme="teal" size="lg" mb={4}>
+          Search
+        </Button>
+      </Box>
       {error && (
         <Text color="red.500" mt={4}>
           {error}

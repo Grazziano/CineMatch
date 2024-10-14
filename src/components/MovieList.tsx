@@ -7,7 +7,17 @@ interface MovieListProps {
 
 function MovieList({ movies }: MovieListProps) {
   return (
-    <Box display="grid" gridTemplateColumns="repeat(3, 1fr)" gap={6} mt={6}>
+    <Box
+      display="grid"
+      gridTemplateColumns={[
+        '1fr',
+        'repeat(2, 1fr)',
+        'repeat(3, 1fr)',
+        'repeat(4, 1fr)',
+      ]}
+      gap={6}
+      mt={6}
+    >
       {movies.map((movie) => (
         <Box
           key={movie.id}
@@ -15,12 +25,19 @@ function MovieList({ movies }: MovieListProps) {
           borderRadius="lg"
           overflow="hidden"
         >
-          <Image src={movie.poster} alt={movie.title} />
-          <Box p="6">
-            <Text fontWeight="bold" fontSize="xl">
+          <Image
+            src={movie.poster}
+            alt={movie.title}
+            boxSize={['100%', '300px']}
+            objectFit="cover"
+          />
+          <Box p={4}>
+            <Text fontWeight="bold" fontSize={['md', 'lg', 'xl']}>
               {movie.title}
             </Text>
-            <Text>Rating: {movie.rating ? movie.rating : 'N/A'}</Text>
+            <Text fontSize={['sm', 'md']}>
+              Rating: {movie.rating ? movie.rating : 'N/A'}
+            </Text>
           </Box>
         </Box>
       ))}
