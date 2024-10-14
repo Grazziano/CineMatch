@@ -41,3 +41,28 @@ export const getMovieDetails = async (id: string): Promise<Movie> => {
     throw new Error('Movie not found');
   }
 };
+
+// Função para buscar filmes por título ou categoria (tipo)
+export const searchMoviesByCategory = async (
+  query: string = '',
+  type: string = ''
+): Promise<Movie[]> => {
+  const response = await axios.get(
+    `${BASE_URL}&s=${query}${type ? `&type=${type}` : ''}`
+  );
+
+  if (response.data.Response === 'True') {
+    return response.data.Search.map((item: any) => ({
+      id: item.imdbID,
+      title: item.Title,
+      description: '',
+      rating: 0,
+      poster:
+        item.Poster !== 'N/A'
+          ? item.Poster
+          : 'https://via.placeholder.com/300x450?text=No+Image',
+    }));
+  } else {
+    return [];
+  }
+};

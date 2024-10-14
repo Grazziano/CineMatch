@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Box, Input, Button, Text } from '@chakra-ui/react';
 import { Movie } from '../types/Movie';
-import { searchMovies } from '../services/api';
+import { searchMovies, searchMoviesByCategory } from '../services/api';
 import MovieList from './MovieList';
+import CategoryButtons from './CategoryButtons';
 
 export default function MovieSearch() {
   const [query, setQuery] = useState('');
@@ -12,6 +13,20 @@ export default function MovieSearch() {
   const handleSearch = async () => {
     try {
       const result = await searchMovies(query);
+      if (result.length > 0) {
+        setMovies(result);
+        setError('');
+      } else {
+        setError('No movies found.');
+      }
+    } catch (err) {
+      setError('Error fetching movies.');
+    }
+  };
+
+  const handleCategorySelect = async (category: string) => {
+    try {
+      const result = await searchMoviesByCategory(category);
       if (result.length > 0) {
         setMovies(result);
         setError('');
@@ -43,6 +58,9 @@ export default function MovieSearch() {
           {error}
         </Text>
       )}
+
+      <CategoryButtons onCategorySelect={handleCategorySelect} />
+
       <MovieList movies={movies} />
     </Box>
   );
